@@ -1,16 +1,17 @@
 import { Activity } from "../types"
 
-export type ActivityActions = {
-    type: 'save-activity',
-    payload: { newActivity: Activity }
-}
+export type ActivityActions = 
+  { type: 'save-activity', payload: { newActivity: Activity } } |
+  { type: 'set-activeId', payload: { id: Activity['id'] } }
 
 type ActivityState = {
-    activities: Activity[];
+    activities: Activity[]
+    activeId: Activity['id']
 }
 
 export const initialState: ActivityState = {
-    activities: []
+    activities: [],
+    activeId: ''
 }
 
 export default (state: ActivityState = initialState, { type, payload }: ActivityActions) => {
@@ -20,6 +21,12 @@ export default (state: ActivityState = initialState, { type, payload }: Activity
     return { 
         ...state, 
         activities: [...state.activities, payload.newActivity] 
+    }
+  
+  case "set-activeId":
+    return {
+        ...state,
+        activeId: payload.id
     }
 
   default:
