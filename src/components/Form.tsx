@@ -2,12 +2,13 @@ import { useState } from "react";
 import { FunctionComponent } from "react";
 import { Category, Activity } from "../types/index.ts";
 import categories from "../data/categories.ts";
+import { ActivityActions } from "../reducers/activityReducer.ts";
 
 interface FormProps {
-    
+    dispatch: React.Dispatch<ActivityActions>;
 }
  
-const Form: FunctionComponent<FormProps> = () => {
+const Form: FunctionComponent<FormProps> = ({ dispatch }) => {
 
     const [activity, setActivity] = useState<Activity>({
         category: 1,
@@ -25,12 +26,19 @@ const Form: FunctionComponent<FormProps> = () => {
 
     const isValidActivity = () => { 
         const { name, calories } = activity;
-        return name.trim() !== '' && calories > 0;
+        return name.trim() !== '' && calories !== 0;
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        dispatch({ type: "save-activity", payload: { newActivity: activity } })
     }
 
     return ( 
         <form
             className="space-y-5 bg-white p-10 rounded-lg shadow"
+            onSubmit={handleSubmit}
         >
             <div className="grid grid-cols-1 gap-3">
                 <label htmlFor="category" className="font-bold">Categoría:</label>
