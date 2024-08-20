@@ -17,8 +17,10 @@ export default (state: ActivityState = initialState, { type, payload }: Activity
   switch (type) {
 
   case "save-activity":
-    // TODO: Implement save-activity reducer
-    return { ...state, ...payload }
+    return { 
+        ...state, 
+        activities: [...state.activities, payload.newActivity] 
+    }
 
   default:
     return state
