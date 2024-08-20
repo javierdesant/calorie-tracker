@@ -19,7 +19,7 @@ This project is taught by instructor [Juan Pablo De la torre Valdez](https://www
 
 ### Links
 
-- Live Site URL: (https://tipcalculator-javierdesant.netlify.app/)
+- Live Site URL: (https://calorietracker-javierdesant.netlify.app/)
 
 ### Built with
 
