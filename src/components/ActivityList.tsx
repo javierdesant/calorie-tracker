@@ -3,6 +3,7 @@ import { Activity } from "../types";
 import categories from "../data/categories";
 import { PencilSquareIcon } from "@heroicons/react/16/solid";
 import { ActivityActions } from "../reducers/activityReducer";
+import { XCircleIcon } from "@heroicons/react/20/solid";
 
 interface ActivityListProps {
     activities: Activity[]
@@ -44,7 +45,14 @@ const ActivityList: FunctionComponent<ActivityListProps> = ({ activities, dispat
                                 className="h-8 w-8 text-gray-800"
                             />
                         </button>
-
+                        
+                        <button
+                            onClick={() => dispatch({ type: "delete-activity", payload: { id: activity.id }})}
+                        >
+                            <XCircleIcon 
+                                className="h-8 w-8 text-red-500"
+                            />
+                        </button>
                     </div>
                 </div>
             ))}
