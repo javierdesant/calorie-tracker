@@ -7,14 +7,16 @@ import { ActivityActions } from "../reducers/activityReducer.ts";
 interface FormProps {
     dispatch: React.Dispatch<ActivityActions>;
 }
+
+const initialState: Activity = {
+    category: 1,
+    name: '',
+    calories: 0
+}
  
 const Form: FunctionComponent<FormProps> = ({ dispatch }) => {
 
-    const [activity, setActivity] = useState<Activity>({
-        category: 1,
-        name: '',
-        calories: 0
-    });
+    const [activity, setActivity] = useState<Activity>(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
         const isNumberField = ['category', 'calories'].includes(e.target.id);
@@ -31,8 +33,8 @@ const Form: FunctionComponent<FormProps> = ({ dispatch }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         dispatch({ type: "save-activity", payload: { newActivity: activity } })
+        setActivity(initialState);
     }
 
     return ( 
