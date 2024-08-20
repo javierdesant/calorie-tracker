@@ -18,9 +18,19 @@ export default (state: ActivityState = initialState, { type, payload }: Activity
   switch (type) {
 
   case "save-activity":
+
+    let updatedActivities: Activity[] = [] 
+    if (state.activeId) {
+      updatedActivities = state.activities.map( activity => activity.id === state.activeId ? 
+        payload.newActivity : activity)
+    } else {
+      updatedActivities = [...state.activities, payload.newActivity]
+    }
+
     return { 
         ...state, 
-        activities: [...state.activities, payload.newActivity] 
+        activities: updatedActivities,
+        activeId: ''
     }
   
   case "set-activeId":
