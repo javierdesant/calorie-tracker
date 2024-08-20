@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FunctionComponent } from "react";
+import { useState, FunctionComponent } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { Category, Activity } from "../types/index.ts";
 import categories from "../data/categories.ts";
 import { ActivityActions } from "../reducers/activityReducer.ts";
@@ -9,6 +9,7 @@ interface FormProps {
 }
 
 const initialState: Activity = {
+    id: uuidv4(),
     category: 1,
     name: '',
     calories: 0
@@ -34,7 +35,10 @@ const Form: FunctionComponent<FormProps> = ({ dispatch }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch({ type: "save-activity", payload: { newActivity: activity } })
-        setActivity(initialState);
+        setActivity({
+            ...initialState,
+            id: uuidv4()
+        });
     }
 
     return ( 
