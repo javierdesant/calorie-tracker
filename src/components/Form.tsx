@@ -1,11 +1,12 @@
-import { useState, FunctionComponent } from "react";
+import { useState, useEffect, FunctionComponent } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Category, Activity } from "../types/index.ts";
 import categories from "../data/categories.ts";
-import { ActivityActions } from "../reducers/activityReducer.ts";
+import { ActivityActions, ActivityState } from "../reducers/activityReducer.ts";
 
 interface FormProps {
-    dispatch: React.Dispatch<ActivityActions>;
+    dispatch: React.Dispatch<ActivityActions>
+    state: ActivityState
 }
 
 const initialState: Activity = {
@@ -15,9 +16,16 @@ const initialState: Activity = {
     calories: 0
 }
  
-const Form: FunctionComponent<FormProps> = ({ dispatch }) => {
+const Form: FunctionComponent<FormProps> = ({ dispatch, state }) => {
 
     const [activity, setActivity] = useState<Activity>(initialState);
+
+    useEffect(() => {
+        if (state.activeId) {
+            const selectedActivity = state.activities.find(stateActivity => stateActivity.id === state.activeId);
+            setActivity(selectedActivity ? selectedActivity : initialState);
+        }
+    }, [state.activeId])
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
         const isNumberField = ['category', 'calories'].includes(e.target.id);
