@@ -3,7 +3,9 @@ import { Activity } from "../types"
 export type ActivityActions = 
   { type: 'save-activity', payload: { newActivity: Activity } } |
   { type: 'set-activeId', payload: { id: Activity['id'] } } |
-  { type: 'delete-activity', payload: { id: Activity['id'] } }
+  { type: 'delete-activity', payload: { id: Activity['id'] } } |
+  { type: 'restart-app', payload: {} }
+
 
 export type ActivityState = {
     activities: Activity[]
@@ -49,6 +51,12 @@ export default (state: ActivityState = initialState, { type, payload }: Activity
     return {
         ...state,
         activities: state.activities.filter(activity => activity.id !== payload.id)
+    }
+
+  case "restart-app":
+    return {
+        activities: [],
+        activeId: ''
     }
 
   default:
