@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Udemy - Calorie Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is taught by instructor [Juan Pablo De la torre Valdez](https://www.udemy.com/user/juanpablodelatorrevaldez/) through the [Udemy](https://www.udemy.com/) platform. Udemy offers a wide range of online courses across various disciplines, allowing individuals to learn new skills and advance their knowledge at their own pace.
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+- [Author](#author)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Screenshot
 
-- Configure the top-level `parserOptions` property like this:
+![](/public/screenshot-calorietracker-javierdesant.png)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Links
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Live Site URL: (https://tipcalculator-javierdesant.netlify.app/)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Built with
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Flexbox
+- CSS Grid
+- [React](https://reactjs.org/) - JS library
+- [Vite](https://vitejs.dev/) - Build tool
+- [Tailwind CSS](https://tailwindcss.com/) - For styles
+
+### What I learned
+
+In this project, I learned the following:
+
+- Understanding TSX Syntax
+- Building applications with Component-Based Architecture
+- Managing Props and State effectively
+- **Implementing the useReducer hook for complex state logic**
+- Handling Actions in state management
+- **Initializing State with local storage**
+- Utilizing React Hooks
+- Creating Custom Hooks in React
+- Defining Custom Types and Interfaces with TypeScript
+- **Using Tailwind CSS classes for styling**
+  - Applying utility-first classes for layout and design
+  - Customizing components with Tailwind's configuration
+  - Leveraging responsive design utilities
+
+## Author
+
+- LinkedIn - [Javier de Santiago Soto](www.linkedin.com/in/javierdesant)
+- Frontend Mentor - [@javierdesant](https://www.frontendmentor.io/profile/javierdesant)
